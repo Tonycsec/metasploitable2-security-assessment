@@ -25,6 +25,10 @@ Nmap identified the following service:
 
 The detected version indicated that the target was running an obsolete release of vsftpd and warranted further service enumeration.
 
+The corresponding evidence is available here:
+
+[View Nmap service detection evidence](../evidence/01_FTP01_nmap_ftp_detection.png)
+
 ## Anonymous Authentication
 
 After identifying the FTP service, an FTP connection was established to determine whether anonymous authentication was permitted.
@@ -33,7 +37,9 @@ Anonymous login was successfully accepted by the server.
 
 This confirmed that the FTP service allowed unauthenticated access through the anonymous FTP account.
 
-The relevant evidence is documented in the corresponding screenshot.
+The relevant evidence is documented in the corresponding screenshot:
+
+[View anonymous FTP login evidence](../evidence/01_FTP02_ftp_anonymous_login.png)
 
 ## Directory Enumeration
 
@@ -53,7 +59,9 @@ Anonymous access confirmed
 FTP directory contents enumerated
 ```
 
-The directory listing was documented as part of the service assessment evidence.
+The directory listing was documented as part of the service assessment evidence:
+
+[View FTP directory enumeration evidence](../evidence/01_FTP03_ftp_directory_listing.png)
 
 ## Enumeration Findings
 
