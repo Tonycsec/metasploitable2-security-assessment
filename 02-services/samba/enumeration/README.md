@@ -76,7 +76,7 @@ The enumeration was performed successfully without supplying authentication cred
 
 ### Evidence
 
-![Anonymous SMB share enumeration](../08_SAMBA01_smb_anonymous_enumeration.png)
+![Anonymous SMB share enumeration](../evidence/08_SAMBA01_smb_anonymous_enumeration.png)
 
 **Key observation:** SMB resources could be enumerated anonymously.
 
@@ -98,7 +98,7 @@ This confirmed that the `tmp` share permitted anonymous access.
 
 ### Evidence
 
-![Anonymous access to tmp share](../08_SAMBA02_smb_tmp_anonymous_access.png)
+![Anonymous access to tmp share](../evidence/08_SAMBA02_smb_tmp_anonymous_access.png)
 
 **Key observation:** The `tmp` share accepted an anonymous SMB connection.
 
@@ -122,7 +122,7 @@ The important finding is therefore not simply that the share existed, but that a
 
 ### Evidence
 
-![Anonymous read access](../08_SAMBA03_smb_tmp_read_access.png)
+![Anonymous read access](../evidence/08_SAMBA03_smb_tmp_read_access.png)
 
 **Key observation:** Anonymous users could list the contents of the `tmp` share.
 
@@ -154,7 +154,7 @@ This was a controlled permissions test: a temporary directory was created specif
 
 ### Evidence
 
-![Anonymous write access](../08_SAMBA04_smb_tmp_write_access.png)
+![Anonymous write access](../evidence/08_SAMBA04_smb_tmp_write_access.png)
 
 **Key observation:** An unauthenticated SMB session could create and remove a directory.
 
@@ -184,7 +184,7 @@ The `opt` share was visible during enumeration, but its contents were protected 
 
 ### Evidence
 
-![Anonymous access denied to opt](../08_SAMBA05_smb_denied_access.png)
+![Anonymous access denied to opt](../evidence/08_SAMBA05_smb_denied_access.png)
 
 **Key observation:** The `opt` share was enumerated but rejected anonymous access.
 
