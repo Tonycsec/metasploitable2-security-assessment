@@ -43,7 +43,7 @@ Export list for 192.168.56.20:
 / *
 ```
 
-[View NFS export evidence](../evidence/14_NFS02_nfs_export_root_to_all.png)
+![View NFS export evidence](../evidence/14_NFS02_nfs_export_root_to_all.png)
 
 The wildcard `*` indicates that the export was not restricted to a specific trusted client or network.
 
@@ -91,7 +91,7 @@ The following file was successfully read:
 /etc/passwd
 ```
 
-[View /etc/passwd disclosure evidence](../evidence/14_NFS04_nfs_passwd_disclosure.png)
+![View /etc/passwd disclosure evidence](../evidence/14_NFS04_nfs_passwd_disclosure.png)
 
 The file contained information about local system accounts, including usernames, UIDs, GIDs, home directories and login shells.
 
@@ -101,7 +101,7 @@ More significantly, the assessment also successfully accessed:
 /etc/shadow
 ```
 
-[View sanitized /etc/shadow disclosure evidence](../evidence/14_NFS05_nfs_shadow_disclosure_%28REDACTED%29.png)
+![View sanitized /etc/shadow disclosure evidence](../evidence/14_NFS05_nfs_shadow_disclosure_%28REDACTED%29.png)
 
 The `/etc/shadow` file contains password authentication material and should not be remotely readable by an unauthorized client.
 
@@ -161,7 +161,7 @@ ls -l /mnt/metasploitable2_nfs/tmp/test2_nfs
 
 The file was successfully created.
 
-[View NFS write-access evidence](../evidence/14_NFS06_nfs_write_access.png)
+![View NFS write-access evidence](../evidence/14_NFS06_nfs_write_access.png)
 
 This demonstrated that the NFS exposure was not limited to read access.
 
@@ -220,9 +220,9 @@ Complete root filesystem accessible
 Remote file creation possible
 ```
 
-[View NFS service identification evidence](../evidence/14_NFS01_nmap_nfs_detection.png)
+![View NFS service identification evidence](../evidence/14_NFS01_nmap_nfs_detection.png)
 
-[View mounted root filesystem evidence](../evidence/14_NFS03_nfs_root_filesystem_mounted.png)
+![View mounted root filesystem evidence](../evidence/14_NFS03_nfs_root_filesystem_mounted.png)
 
 The evidence demonstrates that the exposure was not theoretical: the exported root filesystem was successfully mounted and accessed from the assessment host.
 
@@ -269,37 +269,37 @@ The six pieces of evidence demonstrate the finding progressively:
 
 Nmap confirmed NFS on TCP/2049:
 
-[View NFS service detection evidence](../evidence/14_NFS01_nmap_nfs_detection.png)
+![View NFS service detection evidence](../evidence/14_NFS01_nmap_nfs_detection.png)
 
 ### 2. Export Enumeration
 
 `showmount` demonstrated that `/` was exported to `*`:
 
-[View NFS export evidence](../evidence/14_NFS02_nfs_export_root_to_all.png)
+![View NFS export evidence](../evidence/14_NFS02_nfs_export_root_to_all.png)
 
 ### 3. Remote Mount
 
 The exported root filesystem was successfully mounted:
 
-[View mounted root filesystem evidence](../evidence/14_NFS03_nfs_root_filesystem_mounted.png)
+![View mounted root filesystem evidence](../evidence/14_NFS03_nfs_root_filesystem_mounted.png)
 
 ### 4. Account Information Disclosure
 
 `/etc/passwd` was readable through the mounted filesystem:
 
-[View /etc/passwd disclosure evidence](../evidence/14_NFS04_nfs_passwd_disclosure.png)
+![View /etc/passwd disclosure evidence](../evidence/14_NFS04_nfs_passwd_disclosure.png)
 
 ### 5. Authentication Material Disclosure
 
 `/etc/shadow` was readable through the mounted filesystem:
 
-[View sanitized /etc/shadow evidence](../evidence/14_NFS05_nfs_shadow_disclosure_%28REDACTED%29.png)
+![View sanitized /etc/shadow evidence](../evidence/14_NFS05_nfs_shadow_disclosure_%28REDACTED%29.png)
 
 ### 6. Remote Write Access
 
 A controlled file-creation test succeeded under `/tmp`:
 
-[View NFS write-access evidence](../evidence/14_NFS06_nfs_write_access.png)
+![View NFS write-access evidence](../evidence/14_NFS06_nfs_write_access.png)
 
 The complete evidence chain is:
 
