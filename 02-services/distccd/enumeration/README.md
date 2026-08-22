@@ -27,7 +27,7 @@ The scan identified:
 
 This established that the target was running an old version of the `distccd` distributed compilation service.
 
-[View distccd service detection evidence](../evidence/10_DISTCCD01_nmap_distccd_detection.png)
+![View distccd service detection evidence](../evidence/10_DISTCCD01_nmap_distccd_detection.png)
 
 ## 2. Initial Exploit-Database Search
 
@@ -62,7 +62,7 @@ During the assessment, we identified the Nmap NSE script documentation for:
 
 The documented vulnerability affects vulnerable configurations of the distributed compiler daemon `distccd`.
 
-[View documented vulnerability reference](../evidence/10_DISTCCD03_documented_vulnerability.png)
+![View documented vulnerability reference](../evidence/10_DISTCCD03_documented_vulnerability.png)
 
 The documentation describes the vulnerability as allowing command execution through the affected service.
 
@@ -98,7 +98,7 @@ uid=1(daemon) gid=1(daemon) groups=1(daemon)
 
 This indicates that the vulnerable service was operating under the `daemon` account rather than directly as root.
 
-[View Nmap CVE detection evidence](../evidence/10_DISTCCD04_distccd_cve_2004_2687.png)
+![View Nmap CVE detection evidence](../evidence/10_DISTCCD04_distccd_cve_2004_2687.png)
 
 ### Important Assessment Boundary
 
@@ -191,19 +191,19 @@ The public portfolio uses three relevant screenshots:
 
 Nmap identifies TCP/3632 and the running `distccd` version.
 
-[View service detection evidence](../evidence/10_DISTCCD01_nmap_distccd_detection.png)
+![View service detection evidence](../evidence/10_DISTCCD01_nmap_distccd_detection.png)
 
 ### Evidence 02 — Vulnerability Documentation
 
 The Nmap documentation provides the technical reference for CVE-2004-2687.
 
-[View documented vulnerability reference](../evidence/10_DISTCCD03_documented_vulnerability.png)
+![View documented vulnerability reference](../evidence/10_DISTCCD03_documented_vulnerability.png)
 
 ### Evidence 03 — Vulnerability Detection
 
 Nmap NSE performs a non-destructive vulnerability check and identifies the target as vulnerable to CVE-2004-2687.
 
-[View vulnerability detection evidence](../evidence/10_DISTCCD04_distccd_cve_2004_2687.png)
+![View vulnerability detection evidence](../evidence/10_DISTCCD04_distccd_cve_2004_2687.png)
 
 The evidence chain is:
 
