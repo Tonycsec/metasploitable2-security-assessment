@@ -26,7 +26,7 @@ Nmap identified:
 3306/tcp open mysql MySQL 5.0.51a-3ubuntu5
 ```
 
-[View MySQL service detection evidence](../evidence/11_MYSQL01_nmap_mysql_detection.png)
+![View MySQL service detection evidence](../evidence/11_MYSQL01_nmap_mysql_detection.png)
 
 This established that the target was exposing a MySQL database service over TCP/3306.
 
@@ -53,7 +53,7 @@ The response also indicated support for:
 SwitchToSSLAfterHandshake
 ```
 
-[View MySQL version enumeration evidence](../evidence/11_MYSQL02_mysql_version_enumeration.png)
+![View MySQL version enumeration evidence](../evidence/11_MYSQL02_mysql_version_enumeration.png)
 
 This provided additional information about the legacy MySQL implementation and its connection capabilities.
 
@@ -95,7 +95,7 @@ Server version: 5.0.51a-3ubuntu5 (Ubuntu)
 
 Most importantly, no password was requested.
 
-[View remote MySQL root access evidence](../evidence/11_MYSQL03_remote_mysql_root_access.png)
+![View remote MySQL root access evidence](../evidence/11_MYSQL03_remote_mysql_root_access.png)
 
 This demonstrated that the target accepted a remote MySQL connection using the `root` account without requiring a password.
 
@@ -135,7 +135,7 @@ The result was:
 root@%
 ```
 
-[View MySQL remote root identity evidence](../evidence/11_MYSQL04_mysql_remote_root_identity.png)
+![View MySQL remote root identity evidence](../evidence/11_MYSQL04_mysql_remote_root_identity.png)
 
 The `%` wildcard is particularly significant because it indicates that the account is configured to accept connections from arbitrary hosts, subject to surrounding network controls.
 
@@ -161,7 +161,7 @@ tikiwiki
 tikiwiki195
 ```
 
-[View MySQL database enumeration evidence](../evidence/11_MYSQL05_mysql_database_enumeration.png)
+![View MySQL database enumeration evidence](../evidence/11_MYSQL05_mysql_database_enumeration.png)
 
 This demonstrated that the connected account had visibility across multiple databases hosted on the target.
 
@@ -189,7 +189,7 @@ with the root account configured as:
 root    %
 ```
 
-[View MySQL user and host enumeration evidence](../evidence/11_MYSQL06_mysql_user_host_enumeration.png)
+![View MySQL user and host enumeration evidence](../evidence/11_MYSQL06_mysql_user_host_enumeration.png)
 
 The `%` host wildcard is significant because the administrative account was not restricted to localhost.
 
@@ -209,7 +209,7 @@ The result was:
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION
 ```
 
-[View MySQL root privileges evidence](../evidence/11_MYSQL07_mysql_root_full_privileges.png)
+![View MySQL root privileges evidence](../evidence/11_MYSQL07_mysql_root_full_privileges.png)
 
 This is the strongest piece of evidence in the MySQL assessment.
 
@@ -264,7 +264,7 @@ guestbook
 users
 ```
 
-[View DVWA database access evidence](../evidence/11_MYSQL08_dvwa_database_access.png)
+![View DVWA database access evidence](../evidence/11_MYSQL08_dvwa_database_access.png)
 
 This demonstrates access to an actual application database hosted on the target.
 
