@@ -40,11 +40,11 @@ X-Powered-By: PHP/5.2.4-2ubuntu5.10
 
 The Apache version was identified through Nmap:
 
-[View Nmap HTTP service detection evidence](../evidence/06_HTTP01_nmap_http_detection.png)
+![View Nmap HTTP service detection evidence](../evidence/06_HTTP01_nmap_http_detection.png)
 
 The Apache and PHP versions were also disclosed through HTTP response headers:
 
-[View HTTP header evidence](../evidence/06_HTTP02_http_headers.png)
+![View HTTP header evidence](../evidence/06_HTTP02_http_headers.png)
 
 ### Security Impact
 
@@ -90,11 +90,11 @@ Directory enumeration also identified additional accessible and redirected resou
 
 The web content retrieved from the server disclosed multiple hosted applications:
 
-[View web content and information disclosure evidence](../evidence/06_HTTP03_banner_warning_sensitiveinfo_numeration%20%28REDACTED%29.png)
+![View web content and information disclosure evidence](../evidence/06_HTTP03_banner_warning_sensitiveinfo_numeration%20%28REDACTED%29.png)
 
 Gobuster identified multiple resources returning HTTP 200 or HTTP 301 responses:
 
-[View Gobuster directory enumeration evidence](../evidence/06_HTTP04_gobuster_directory_enumeration.png)
+![View Gobuster directory enumeration evidence](../evidence/06_HTTP04_gobuster_directory_enumeration.png)
 
 ### Security Impact
 
@@ -140,11 +140,11 @@ The web page also disclosed information about the installed applications and the
 
 The HTTP headers disclosed the server and PHP implementation:
 
-[View HTTP header evidence](../evidence/06_HTTP02_http_headers.png)
+![View HTTP header evidence](../evidence/06_HTTP02_http_headers.png)
 
 The web page content disclosed additional information about the environment and hosted applications:
 
-[View sanitized web-content evidence](../evidence/06_HTTP03_banner_warning_sensitiveinfo_numeration%20%28REDACTED%29.png)
+![View sanitized web-content evidence](../evidence/06_HTTP03_banner_warning_sensitiveinfo_numeration%20%28REDACTED%29.png)
 
 ### Security Impact
 
@@ -208,15 +208,15 @@ The assessment also confirmed that phpMyAdmin was accessible through the web ser
 
 The Gobuster enumeration identified the resources:
 
-[View Gobuster directory enumeration evidence](../evidence/06_HTTP04_gobuster_directory_enumeration.png)
+![View Gobuster directory enumeration evidence](../evidence/06_HTTP04_gobuster_directory_enumeration.png)
 
 phpMyAdmin was subsequently identified through its web interface:
 
-[View phpMyAdmin identification evidence](../evidence/06_HTTP05_phpMyAdmin_identification.png)
+![View phpMyAdmin identification evidence](../evidence/06_HTTP05_phpMyAdmin_identification.png)
 
 The browser-based web access was also verified:
 
-[View browser-based HTTP access evidence](../evidence/06_HTTP06_web_access.png)
+![View browser-based HTTP access evidence](../evidence/06_HTTP06_web_access.png)
 
 ### Security Impact
 
