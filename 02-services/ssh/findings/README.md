@@ -28,7 +28,7 @@ The service version was identified through Nmap service and version detection.
 
 The SSH service and version were identified during the enumeration phase:
 
-[View Nmap SSH service detection evidence](../evidence/02_SSH01_nmap_ssh_detection.png)
+![View Nmap SSH service detection evidence](../evidence/02_SSH01_nmap_ssh_detection.png)
 
 The detected service was:
 
@@ -81,11 +81,11 @@ Their offer: ssh-rsa,ssh-dss
 
 The initial connection attempt demonstrated the legacy algorithm incompatibility:
 
-[View legacy SSH algorithm error evidence](../evidence/02_SSH02_ssh_algorithm_error.png)
+![View legacy SSH algorithm error evidence](../evidence/02_SSH02_ssh_algorithm_error.png)
 
 The connection was subsequently established after explicitly enabling compatibility with `ssh-rsa`.
 
-[View authenticated SSH session evidence](../evidence/02_SSH03_ssh_authenticated_session.png)
+![View authenticated SSH session evidence](../evidence/02_SSH03_ssh_authenticated_session.png)
 
 ### Security Impact
 
@@ -131,11 +131,11 @@ The resulting session provided an interactive shell under the `msfadmin` account
 
 The successful authenticated SSH session is documented here:
 
-[View authenticated SSH session evidence](../evidence/02_SSH03_ssh_authenticated_session.png)
+![View authenticated SSH session evidence](../evidence/02_SSH03_ssh_authenticated_session.png)
 
 The session was subsequently used to collect system information:
 
-[View SSH system information evidence](../evidence/02_SSH04_ssh_system_information.png)
+![View SSH system information evidence](../evidence/02_SSH04_ssh_system_information.png)
 
 ### Security Impact
 
