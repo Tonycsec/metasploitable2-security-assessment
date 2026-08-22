@@ -16,7 +16,7 @@ The successful connection demonstrated that the database server was accessible r
 
 ### Evidence
 
-[View remote MySQL root access](../evidence/11_MYSQL03_remote_mysql_root_access.png)
+![View remote MySQL root access](../evidence/11_MYSQL03_remote_mysql_root_access.png)
 
 The successful connection returned:
 
@@ -67,7 +67,7 @@ The `%` wildcard indicates that the root account is configured to accept connect
 
 ### Evidence
 
-[View MySQL remote root identity](../evidence/11_MYSQL04_mysql_remote_root_identity.png)
+![View MySQL remote root identity](../evidence/11_MYSQL04_mysql_remote_root_identity.png)
 
 The account was confirmed with:
 
@@ -112,7 +112,7 @@ The authenticated root account was granted unrestricted privileges over all data
 
 ### Evidence
 
-[View MySQL root privileges](../evidence/11_MYSQL07_mysql_root_full_privileges.png)
+![View MySQL root privileges](../evidence/11_MYSQL07_mysql_root_full_privileges.png)
 
 The following command was used:
 
@@ -186,7 +186,7 @@ This is a legacy MySQL implementation.
 
 ### Evidence
 
-[View MySQL version enumeration](../evidence/11_MYSQL02_mysql_version_enumeration.png)
+![View MySQL version enumeration](../evidence/11_MYSQL02_mysql_version_enumeration.png)
 
 The version was identified through:
 
@@ -221,7 +221,7 @@ The authenticated account was able to enumerate multiple databases hosted by the
 
 ### Evidence
 
-[View MySQL database enumeration](../evidence/11_MYSQL05_mysql_database_enumeration.png)
+![View MySQL database enumeration](../evidence/11_MYSQL05_mysql_database_enumeration.png)
 
 The following command was used:
 
@@ -242,7 +242,7 @@ tikiwiki195
 
 Access to the DVWA database was subsequently confirmed.
 
-[View DVWA database access](../evidence/11_MYSQL08_dvwa_database_access.png)
+![View DVWA database access](../evidence/11_MYSQL08_dvwa_database_access.png)
 
 The following commands were used:
 
