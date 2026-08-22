@@ -27,7 +27,7 @@ Nmap identified:
 5432/tcp open postgresql PostgreSQL DB 8.3.0 - 8.3.7
 ```
 
-[View PostgreSQL service detection evidence](../evidence/12_POSTGRESQL01_nmap_postgresql_detection.png)
+![View PostgreSQL service detection evidence](../evidence/12_POSTGRESQL01_nmap_postgresql_detection.png)
 
 This established that PostgreSQL was exposed remotely and that the target was running a legacy PostgreSQL implementation.
 
@@ -77,7 +77,7 @@ The successful session was represented by:
 postgres=#
 ```
 
-[View remote PostgreSQL access evidence](../evidence/12_POSTGRESQL02_remote_postgresql_access.png)
+![View remote PostgreSQL access evidence](../evidence/12_POSTGRESQL02_remote_postgresql_access.png)
 
 This confirmed that the `postgres` account could authenticate remotely against the database service.
 
@@ -100,7 +100,7 @@ PostgreSQL 8.3.1 on i486-pc-linux-gnu,
 compiled by GCC cc (GCC) 4.2.3 (Ubuntu 4.2.3-2ubuntu4)
 ```
 
-[View PostgreSQL version evidence](../evidence/12_POSTGRESQL03_postgresql_version.png)
+![View PostgreSQL version evidence](../evidence/12_POSTGRESQL03_postgresql_version.png)
 
 This confirmed that the target was running PostgreSQL 8.3.1.
 
@@ -124,7 +124,7 @@ current_user
 postgres
 ```
 
-[View PostgreSQL current-user evidence](../evidence/12_POSTGRESQL04_postgresql_current_user.png)
+![View PostgreSQL current-user evidence](../evidence/12_POSTGRESQL04_postgresql_current_user.png)
 
 This confirmed that the remote session was authenticated as the PostgreSQL `postgres` account.
 
@@ -156,7 +156,7 @@ The value `t` means **true**.
 
 Therefore, the authenticated `postgres` account was confirmed to be a PostgreSQL superuser.
 
-[View PostgreSQL superuser confirmation evidence](../evidence/12_POSTGRESQL05_postgresql_superuser_confirmation.png)
+![View PostgreSQL superuser confirmation evidence](../evidence/12_POSTGRESQL05_postgresql_superuser_confirmation.png)
 
 This is the most important evidence in the PostgreSQL assessment.
 
