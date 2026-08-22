@@ -22,7 +22,7 @@ Nmap identified TCP/80 as an open HTTP service running Apache:
 80/tcp open http Apache httpd 2.2.8 ((Ubuntu) DAV/2)
 ```
 
-[View Nmap HTTP service detection evidence](../evidence/06_HTTP01_nmap_http_detection.png)
+![View Nmap HTTP service detection evidence](../evidence/06_HTTP01_nmap_http_detection.png)
 
 The detected version identifies the web server as an obsolete Apache HTTP Server implementation.
 
@@ -45,7 +45,7 @@ X-Powered-By: PHP/5.2.4-2ubuntu5.10
 Content-Type: text/html
 ```
 
-[View HTTP header evidence](../evidence/06_HTTP02_http_headers.png)
+![View HTTP header evidence](../evidence/06_HTTP02_http_headers.png)
 
 The response therefore disclosed both the Apache web-server implementation/version and the PHP version.
 
@@ -69,7 +69,7 @@ The returned page disclosed information about the Metasploitable installation an
 /dav/
 ```
 
-[View web content and information disclosure evidence](../evidence/06_HTTP03_banner_warning_sensitiveinfo_numeration%20%28REDACTED%29.png)
+![View web content and information disclosure evidence](../evidence/06_HTTP03_banner_warning_sensitiveinfo_numeration%20%28REDACTED%29.png)
 
 The presence of application links directly in the HTTP response demonstrates that the web server exposes multiple applications through the same HTTP service.
 
@@ -115,7 +115,7 @@ The scan also identified restricted resources returning HTTP 403:
 /server-status
 ```
 
-[View Gobuster directory enumeration evidence](../evidence/06_HTTP04_gobuster_directory_enumeration.png)
+![View Gobuster directory enumeration evidence](../evidence/06_HTTP04_gobuster_directory_enumeration.png)
 
 The HTTP 403 responses are important because they demonstrate that these resources exist while access to them is currently denied.
 
@@ -140,7 +140,7 @@ The discovered `/phpMyAdmin/` resource was inspected to confirm the application 
 
 The application was confirmed to be phpMyAdmin through its HTTP response and HTML content.
 
-[View phpMyAdmin identification evidence](../evidence/06_HTTP05_phpMyAdmin_identification.png)
+![View phpMyAdmin identification evidence](../evidence/06_HTTP05_phpMyAdmin_identification.png)
 
 The assessment at this stage was limited to application identification.
 
@@ -156,7 +156,7 @@ http://192.168.56.20/
 
 The browser displayed the Metasploitable web interface and its exposed application links.
 
-[View browser-based HTTP access evidence](../evidence/06_HTTP06_web_access.png)
+![View browser-based HTTP access evidence](../evidence/06_HTTP06_web_access.png)
 
 This provides visual confirmation that the web service and its linked applications were accessible through a standard HTTP client.
 
