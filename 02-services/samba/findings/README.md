@@ -1,40 +1,54 @@
-# Samba — Security Findings
+# Samba — TCP/445
 
-## Overview
-
-The assessment identified several security weaknesses in the Samba configuration:
-
-- Anonymous SMB share enumeration.
-- Anonymous access to the `tmp` share.
-- Anonymous read access to the `tmp` share.
-- Anonymous write access to the `tmp` share.
-- SMB1 available on the server.
-
-The most significant finding was the ability of an unauthenticated SMB client to create and remove directories on the `tmp` share.
-
-No exploitation beyond controlled access-permission validation was performed.
-
----
-
-# Finding 01 — Anonymous SMB Share Enumeration
-
-**Severity:** Medium
+## Service Assessment
 
 **Service:** Samba / SMB
 
 **Port:** TCP/445
 
-## Description
+**Software identified:** Samba 3.0.20-Debian
 
-The Samba service permitted unauthenticated users to enumerate the SMB resources available on the target.
+**Workgroup:** WORKGROUP
 
-The following command successfully returned the available shares without requiring credentials:
+**SMB version:** SMB1 available
+
+**Authentication:** Anonymous access permitted
+
+**Shares discovered:** `print$`, `tmp`, `opt`, `IPC$`, `ADMIN$`
+
+**Assessment approach:** SMB share enumeration and access-control validation. No exploitation was performed.
+
+---
+
+## Finding
+
+The Samba service allowed anonymous SMB access.
+
+We were able to enumerate the available shares without supplying a username or password and subsequently connect anonymously to the `tmp` share.
+
+The `tmp` share permitted both anonymous read and write access. We verified write permissions safely by creating and removing a test directory.
+
+The `opt` share was successfully enumerated but rejected anonymous access.
+
+The presence of SMB1, combined with anonymous access and an anonymously writable share, represents a significant security misconfiguration.
+
+---
+
+# Detailed Assessment
+
+## 1. Anonymous SMB Share Enumeration
+
+We began by enumerating the SMB resources exposed by the target.
+
+### Command used
 
 ```bash
 smbclient -L //192.168.56.20 -N
 ```
 
-The following resources were identified:
+The `-L` option requests a list of available SMB shares, while `-N` tells `smbclient` to connect without requesting a password.
+
+The enumeration revealed the following resources:
 
 ```text
 print$
@@ -44,120 +58,83 @@ IPC$
 ADMIN$
 ```
 
-The server was identified as:
+The assessment also identified the Samba service as:
 
 ```text
 Samba 3.0.20-Debian
 ```
 
-## Security Impact
+with:
 
-Anonymous share enumeration provides unauthenticated users with information about the resources exposed by the SMB server.
+```text
+WORKGROUP
+```
 
-This information can assist subsequent reconnaissance and help identify potentially accessible or misconfigured resources.
+as the SMB workgroup.
 
-## Evidence
+The enumeration was performed successfully without supplying authentication credentials.
+
+### Evidence
 
 ![Anonymous SMB share enumeration](../evidence/08_SAMBA01_smb_anonymous_enumeration.png)
 
-## Recommendation
-
-- Disable anonymous SMB enumeration where it is not explicitly required.
-- Require authentication for SMB resources.
-- Review all exposed shares and remove unnecessary ones.
-- Restrict SMB access to trusted networks.
+**Key observation:** SMB resources could be enumerated anonymously.
 
 ---
 
-# Finding 02 — Anonymous Access to `tmp`
+## 2. Anonymous Access to the `tmp` Share
 
-**Severity:** High
+After identifying the available shares, we tested the `tmp` resource directly.
 
-**Service:** Samba / SMB
-
-**Port:** TCP/445
-
-## Description
-
-The `tmp` SMB share accepted anonymous connections.
-
-The following command established a session without providing a username or password:
+### Command used
 
 ```bash
 smbclient //192.168.56.20/tmp -N
 ```
 
-The connection succeeded and provided an interactive SMB session.
+The connection succeeded without requesting credentials.
 
-## Security Impact
+This confirmed that the `tmp` share permitted anonymous access.
 
-An unauthenticated network client was able to interact directly with an SMB share without first authenticating.
-
-This bypasses the normal access-control boundary expected for protected SMB resources.
-
-## Evidence
+### Evidence
 
 ![Anonymous access to tmp share](../evidence/08_SAMBA02_smb_tmp_anonymous_access.png)
 
-## Recommendation
-
-- Disable anonymous access unless it is explicitly required.
-- Require authentication for SMB shares.
-- Restrict SMB access to trusted hosts and networks.
-- Review the necessity of the `tmp` share.
+**Key observation:** The `tmp` share accepted an anonymous SMB connection.
 
 ---
 
-# Finding 03 — Anonymous Read Access to `tmp`
+## 3. Testing Read Access
 
-**Severity:** High
+Once connected to the `tmp` share, we checked whether we could inspect its contents.
 
-**Service:** Samba / SMB
-
-**Port:** TCP/445
-
-## Description
-
-After establishing an anonymous connection to the `tmp` share, we successfully listed its contents using:
+### Command used
 
 ```text
 ls
 ```
 
-This confirmed that anonymous users had read access to the share.
+The command successfully returned the contents of the share.
 
-## Security Impact
+This demonstrated that anonymous users had read access to the `tmp` share.
 
-An unauthenticated user could inspect the contents of an SMB-accessible resource.
+The important finding is therefore not simply that the share existed, but that an unauthenticated user could interact with its contents.
 
-The potential impact depends on what files are stored within the share and how those files are subsequently used by the operating system or applications.
-
-## Evidence
+### Evidence
 
 ![Anonymous read access](../evidence/08_SAMBA03_smb_tmp_read_access.png)
 
-## Recommendation
-
-- Remove anonymous read permissions.
-- Apply least-privilege access controls.
-- Restrict the share to authenticated and authorized users.
-- Review the contents of the share for unnecessary or sensitive data.
+**Key observation:** Anonymous users could list the contents of the `tmp` share.
 
 ---
 
-# Finding 04 — Anonymous Write Access to `tmp`
+## 4. Testing Anonymous Write Access
 
-**Severity:** High
+We then tested whether the anonymous session had write permissions.
 
-**Service:** Samba / SMB
+Rather than modifying an existing file, we used a temporary directory specifically for permission validation.
 
-**Port:** TCP/445
-
-## Description
-
-The anonymous SMB session was not limited to read access.
-
-Write permissions were explicitly validated by creating a temporary directory:
+### Command used
 
 ```text
 mkdir test2
@@ -165,140 +142,222 @@ mkdir test2
 
 The directory was successfully created.
 
-We then removed the test directory:
+We then removed it:
 
 ```text
 rmdir test2
 ```
 
-This confirmed that an unauthenticated SMB client had write access to the `tmp` share.
+This confirmed that the anonymous session had write permissions on the `tmp` share.
 
-The test was deliberately limited to creating and removing a harmless temporary directory. No further modification or exploitation was performed.
+This was a controlled permissions test: a temporary directory was created specifically to validate write access and was immediately removed.
 
-## Security Impact
-
-An unauthenticated network user could modify the contents of an SMB-accessible resource.
-
-Depending on how the share is used by the operating system or applications, unauthorized write access could potentially allow:
-
-- Modification of existing files.
-- Placement of unauthorized files.
-- Tampering with application data.
-- Additional attacks if another service consumes files from the share.
-
-The assessment did not test these scenarios. The confirmed finding is the **anonymous write permission itself**.
-
-## Evidence
+### Evidence
 
 ![Anonymous write access](../evidence/08_SAMBA04_smb_tmp_write_access.png)
 
-## Recommendation
-
-- Disable anonymous write access.
-- Remove write permissions from unauthenticated users.
-- Apply least-privilege permissions.
-- Use read-only access where write access is unnecessary.
-- Review whether the `tmp` share is required.
-- Restrict SMB access to trusted networks.
+**Key observation:** An unauthenticated SMB session could create and remove a directory.
 
 ---
 
-# Finding 05 — SMB1 Available
+## 5. Testing the `opt` Share
 
-**Severity:** High
+We also tested another resource discovered during enumeration.
 
-**Service:** Samba / SMB
-
-**Port:** TCP/445
-
-## Description
-
-The assessment identified SMB1 availability on the target.
-
-SMB1 is an obsolete SMB protocol version and should not normally be enabled on modern systems.
-
-## Security Impact
-
-Maintaining legacy protocol support increases the attack surface and may expose systems to vulnerabilities associated with obsolete SMB implementations.
-
-The presence of SMB1 is therefore an additional security weakness in the Samba configuration.
-
-## Recommendation
-
-- Disable SMB1 where compatibility requirements permit.
-- Use current SMB protocol versions.
-- Review legacy systems that may depend on SMB1 before removing it.
-- Monitor SMB connections for unexpected legacy-protocol usage.
-
----
-
-# Supporting Observation — `opt` Access Denied
-
-During the assessment, the `opt` share was also tested anonymously:
+### Command used
 
 ```bash
 smbclient //192.168.56.20/opt -N
 ```
 
-The server rejected the connection with:
+Unlike `tmp`, this resource rejected anonymous access.
+
+The server returned:
 
 ```text
 NT_STATUS_ACCESS_DENIED
 ```
 
-This is **not a vulnerability finding**.
+This comparison was useful because it demonstrated that anonymous access was not universally permitted across every SMB share.
 
-It is useful supporting evidence because it demonstrates that anonymous access was not universally permitted across every discovered SMB resource.
+The `opt` share was visible during enumeration, but its contents were protected against unauthenticated access.
 
-## Evidence
+### Evidence
 
 ![Anonymous access denied to opt](../evidence/08_SAMBA05_smb_denied_access.png)
 
----
-
-# Risk Summary
-
-| Finding | Severity | Confirmed |
-|---|---|---|
-| Anonymous SMB share enumeration | Medium | Yes |
-| Anonymous access to `tmp` | High | Yes |
-| Anonymous read access to `tmp` | High | Yes |
-| Anonymous write access to `tmp` | High | Yes |
-| SMB1 available | High | Yes |
-| Anonymous access to `opt` | — | Denied |
-
-The primary security concern is the combination of:
-
-**Anonymous authentication → accessible SMB share → read access → write access**
-
-This represents a significant access-control misconfiguration.
+**Key observation:** The `opt` share was enumerated but rejected anonymous access.
 
 ---
 
-# Remediation Summary
+# SMB Resources Assessed
 
-The Samba configuration should be reviewed with the following priorities:
+| Resource | Anonymous access | Read | Write |
+|---|---|---|---|
+| `tmp` | Allowed | Verified | Verified |
+| `opt` | Denied | — | — |
+| `print$` | Enumerated | Not verified | Not verified |
+| `IPC$` | Enumerated | Not assessed | Not assessed |
+| `ADMIN$` | Enumerated | Not assessed | Not assessed |
 
-1. **Disable anonymous access** unless explicitly required.
-2. **Remove anonymous write permissions** from the `tmp` share.
-3. **Restrict SMB shares to authorized users and hosts.**
-4. **Review and remove unnecessary shares.**
-5. **Disable SMB1** where compatibility requirements permit.
-6. **Restrict TCP/445 to trusted networks** using appropriate firewall controls.
-7. **Apply least-privilege permissions** to all SMB resources.
+This table deliberately reflects only what was actually verified during the assessment.
+
+We do **not** claim read or write permissions for `print$`, `IPC$` or `ADMIN$` because those permissions were not tested.
 
 ---
 
-# Assessment Conclusion
+# Security Assessment
 
-The Samba assessment identified a significant access-control misconfiguration.
+## Anonymous SMB Access
 
-The server allowed unauthenticated SMB enumeration and provided anonymous access to the `tmp` share. The share permitted both read and write operations, with write access validated through the controlled creation and removal of a temporary directory.
+The Samba service allowed unauthenticated users to enumerate SMB resources:
 
-The assessment also identified SMB1 availability, adding an obsolete protocol to the exposed attack surface.
+```bash
+smbclient -L //192.168.56.20 -N
+```
 
-The `opt` share was deliberately tested as a comparison and correctly rejected anonymous access.
+No username or password was required.
 
-The assessment therefore demonstrates both **positive and negative security findings**: vulnerabilities and misconfigurations were documented where access was actually confirmed, while protected resources were not incorrectly reported as vulnerable.
+**Impact:**
 
-**No exploitation beyond controlled access-permission validation was performed.**
+An unauthenticated network user could discover information about the SMB resources exposed by the server.
+
+**Severity:** Medium
+
+**Recommendation:**
+
+Disable anonymous SMB access unless it is explicitly required. SMB shares should require authentication and appropriate authorization.
+
+---
+
+## Anonymous Read/Write Access to `tmp`
+
+The `tmp` share presented the most significant finding.
+
+We verified that an anonymous user could:
+
+- Connect to the share.
+- List its contents.
+- Create a directory.
+- Remove the directory.
+
+The critical evidence was:
+
+```text
+mkdir test2
+```
+
+followed by:
+
+```text
+rmdir test2
+```
+
+This proves that the anonymous session had write access.
+
+**Impact:**
+
+An unauthenticated user could modify the contents of an SMB-accessible resource.
+
+Depending on how the share is used by the underlying operating system or applications, this could create additional security risks.
+
+For this assessment, we stopped after proving write access and did not attempt further exploitation.
+
+**Severity:** High
+
+**Recommendation:**
+
+- Disable anonymous access.
+- Remove write permissions from unauthenticated users.
+- Apply least-privilege permissions.
+- Review whether the `tmp` share is actually required.
+- Restrict SMB access to trusted networks.
+
+---
+
+## SMB1 Available
+
+The assessment identified SMB1 as available on the server.
+
+SMB1 is an obsolete protocol version and should not normally be enabled on modern systems.
+
+**Impact:**
+
+Maintaining legacy protocol support increases the attack surface and may expose the environment to vulnerabilities associated with obsolete SMB implementations.
+
+**Severity:** High
+
+**Recommendation:**
+
+Disable SMB1 and use a current SMB protocol version where compatibility allows.
+
+---
+
+# Evidence
+
+The evidence collected for this assessment is:
+
+```text
+08_SAMBA/
+├── 08_SAMBA01_smb_anonymous_enumeration.png
+├── 08_SAMBA02_smb_tmp_anonymous_access.png
+├── 08_SAMBA03_smb_tmp_read_access.png
+├── 08_SAMBA04_smb_tmp_write_access.png
+└── 08_SAMBA05_smb_denied_access.png
+```
+
+The evidence chain is:
+
+**SMB discovery → anonymous enumeration → share identification → anonymous `tmp` access → read validation → write-permission validation → access-control comparison**
+
+The `opt` denial is useful supporting evidence because it demonstrates that the assessment distinguished between shares that were anonymously accessible and shares that rejected anonymous access.
+
+---
+
+# Commands
+
+## Enumerate SMB resources anonymously
+
+```bash
+smbclient -L //192.168.56.20 -N
+```
+
+## Connect anonymously to `tmp`
+
+```bash
+smbclient //192.168.56.20/tmp -N
+```
+
+## List contents of the share
+
+```text
+ls
+```
+
+## Test write permission
+
+```text
+mkdir test2
+```
+
+## Remove the test directory
+
+```text
+rmdir test2
+```
+
+## Test anonymous access to `opt`
+
+```bash
+smbclient //192.168.56.20/opt -N
+```
+
+---
+
+# Portfolio Conclusion
+
+> **"TCP/445 exposed Samba 3.0.20-Debian with SMB1 available and anonymous SMB access permitted. Anonymous enumeration revealed multiple SMB resources, including `print$`, `tmp`, `opt`, `IPC$` and `ADMIN$`. The `tmp` share was accessible without authentication and allowed both read and write operations. Write access was safely validated by creating and subsequently removing a test directory. In contrast, the `opt` share was enumerated but rejected anonymous access. The primary findings were anonymous SMB access, an anonymously writable share, and the presence of the obsolete SMB1 protocol. No exploitation was performed."**
+
+## Assessment Chain
+
+**SMB discovery → anonymous enumeration → share identification → anonymous `tmp` access → read validation → write-permission validation → security finding**
