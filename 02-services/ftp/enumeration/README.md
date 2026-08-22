@@ -27,7 +27,7 @@ The detected version indicated that the target was running an obsolete release o
 
 The corresponding evidence is available here:
 
-[View Nmap service detection evidence](../evidence/01_FTP01_nmap_ftp_detection.png)
+![View Nmap service detection evidence](../evidence/01_FTP01_nmap_ftp_detection.png)
 
 ## Anonymous Authentication
 
@@ -39,7 +39,7 @@ This confirmed that the FTP service allowed unauthenticated access through the a
 
 The relevant evidence is documented in the corresponding screenshot:
 
-[View anonymous FTP login evidence](../evidence/01_FTP02_ftp_anonymous_login.png)
+![View anonymous FTP login evidence](../evidence/01_FTP02_ftp_anonymous_login.png)
 
 ## Directory Enumeration
 
@@ -61,7 +61,7 @@ FTP directory contents enumerated
 
 The directory listing was documented as part of the service assessment evidence:
 
-[View FTP directory enumeration evidence](../evidence/01_FTP03_ftp_directory_listing.png)
+![View FTP directory enumeration evidence](../evidence/01_FTP03_ftp_directory_listing.png)
 
 ## Enumeration Findings
 
@@ -81,4 +81,3 @@ The FTP enumeration evidence consists of:
 * FTP directory listing
 
 The screenshots are stored in the project's evidence directory and referenced from the corresponding findings where applicable.
-
