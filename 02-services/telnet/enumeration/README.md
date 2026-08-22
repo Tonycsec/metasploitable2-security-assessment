@@ -23,7 +23,7 @@ Nmap identified TCP/23 as an open Telnet service:
 23/tcp open telnet Linux telnetd
 ```
 
-[View Nmap Telnet service detection evidence](../evidence/03_Telnet01_nmap_telnet_detection.png)
+![View Nmap Telnet service detection evidence](../evidence/03_Telnet01_nmap_telnet_detection.png)
 
 The scan confirmed that the target was exposing a Telnet service and that the service was reachable from the assessment host.
 
@@ -59,7 +59,7 @@ Linux metasploitable 2.6.24-16-server #1 SMP Thu Apr 10 13:58:00 UTC 2008 i686
 msfadmin@metasploitable:~$
 ```
 
-[View authenticated Telnet connection evidence](../evidence/03_Telnet02_telnet_authenticated_connection.png)
+![View authenticated Telnet connection evidence](../evidence/03_Telnet02_telnet_authenticated_connection.png)
 
 This demonstrated that the Telnet service permitted remote interactive authentication using a local system account.
 
