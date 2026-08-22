@@ -28,7 +28,7 @@ Nmap identified the service as Postfix SMTP, confirming that the host was provid
 
 The SMTP service was identified through Nmap:
 
-[View Nmap SMTP service detection evidence](../evidence/04_SMTP01_nmap_smtp_detection.png)
+![View Nmap SMTP service detection evidence](../evidence/04_SMTP01_nmap_smtp_detection.png)
 
 The detected service was:
 
@@ -77,7 +77,7 @@ The SMTP `EHLO` response also disclosed the configured hostname and the function
 
 The SMTP banner and `EHLO` response were obtained through a direct connection:
 
-[View SMTP banner and EHLO evidence](../evidence/04_SMTP03_smtp_banner_and_ehlo.png)
+![View SMTP banner and EHLO evidence](../evidence/04_SMTP03_smtp_banner_and_ehlo.png)
 
 The server disclosed:
 
@@ -96,7 +96,7 @@ DSN
 
 The same functionality was also identified through Nmap SMTP command enumeration:
 
-[View SMTP command enumeration evidence](../evidence/04_SMTP02_smtp_commands.png)
+![View SMTP command enumeration evidence](../evidence/04_SMTP02_smtp_commands.png)
 
 ### Security Impact
 
@@ -143,11 +143,11 @@ The `VRFY` and `ETRN` commands are particularly relevant from a security-hardeni
 
 Nmap identified the supported SMTP functionality:
 
-[View SMTP command enumeration evidence](../evidence/04_SMTP02_smtp_commands.png)
+![View SMTP command enumeration evidence](../evidence/04_SMTP02_smtp_commands.png)
 
 The same capabilities were confirmed during manual SMTP interaction:
 
-[View SMTP banner and EHLO evidence](../evidence/04_SMTP03_smtp_banner_and_ehlo.png)
+![View SMTP banner and EHLO evidence](../evidence/04_SMTP03_smtp_banner_and_ehlo.png)
 
 ### Security Impact
 
