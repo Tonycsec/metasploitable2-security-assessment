@@ -23,7 +23,7 @@ Nmap identified:
 1524/tcp open bindshell Metasploitable root shell
 ```
 
-[View Nmap bind shell detection evidence](../evidence/09_BINDSHELL01_nmap_bindshell_detection.png)
+![Nmap bind shell detection evidence](../evidence/09_BINDSHELL01_nmap_bindshell_detection.png)
 
 The service fingerprint immediately indicated that TCP/1524 was not a conventional application service but a network-accessible shell.
 
@@ -43,7 +43,7 @@ The connection succeeded and presented an interactive shell:
 root@metasploitable:/#
 ```
 
-[View Netcat bind shell connection evidence](../evidence/09_BINDSHELL02_ncat_bindshell_connection.png)
+![Netcat bind shell connection evidence](../evidence/09_BINDSHELL02_ncat_bindshell_connection.png)
 
 This is important because the finding was not based solely on Nmap's service fingerprint.
 
@@ -103,7 +103,7 @@ The result was:
 
 This confirms that the shell was operating directly within the target's root filesystem.
 
-[View root privilege and target verification evidence](../evidence/09_BINDSHELL03_root_privilege_confirmation.png)
+![Root privilege and target verification evidence](../evidence/09_BINDSHELL03_root_privilege_confirmation.png)
 
 The third screenshot provides a compact validation of:
 
