@@ -26,7 +26,7 @@ The target was running **ISC BIND 9.4.2**, a legacy DNS implementation identifie
 
 The DNS service and version were identified through Nmap:
 
-[View Nmap DNS service detection evidence](../evidence/05_DNS01_nmap_dns_detection.png)
+![View Nmap DNS service detection evidence](../evidence/05_DNS01_nmap_dns_detection.png)
 
 The detected service was:
 
@@ -74,7 +74,7 @@ The server processed the query and returned a DNS response.
 
 The direct DNS query is documented here:
 
-[View DNS query evidence](../evidence/05_DNS02_dns_query.png)
+![View DNS query evidence](../evidence/05_DNS02_dns_query.png)
 
 The observed response included:
 
@@ -130,7 +130,7 @@ The server rejected the request:
 
 The rejected AXFR request is documented here:
 
-[View AXFR denied evidence](../evidence/05_DNS03_axfr_denied.png)
+![View AXFR denied evidence](../evidence/05_DNS03_axfr_denied.png)
 
 ### Security Impact
 
