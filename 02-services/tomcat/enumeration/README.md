@@ -489,6 +489,3 @@ http://192.168.56.20:8180/manager/html/upload
 
 ---
 
-## Portfolio Conclusion
-
-**"TCP/8180 exposed an Apache Tomcat 5.5 installation. The Tomcat Manager application was remotely accessible and protected by HTTP Basic Authentication. The credentials `tomcat:tomcat` successfully authenticated to the Manager interface, which exposed administrative deployment and WAR upload functionality. A controlled upload-endpoint test was performed using a harmless text file. No malicious WAR was deployed, and no code execution or persistence was attempted."**
