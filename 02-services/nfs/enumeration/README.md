@@ -24,7 +24,7 @@ Nmap identified:
 2049/tcp open nfs 2-4 (RPC #100003)
 ```
 
-[View NFS service detection evidence](../evidence/14_NFS01_nmap_nfs_detection.png)
+![View NFS service detection evidence](../evidence/14_NFS01_nmap_nfs_detection.png)
 
 This confirmed that the target was exposing NFS directly on TCP/2049.
 
@@ -47,7 +47,7 @@ Export list for 192.168.56.20:
 / *
 ```
 
-[View NFS export enumeration evidence](../evidence/14_NFS02_nfs_export_root_to_all.png)
+![View NFS export enumeration evidence](../evidence/14_NFS02_nfs_export_root_to_all.png)
 
 This was the key configuration finding.
 
@@ -109,7 +109,7 @@ usr
 var
 ```
 
-[View mounted NFS root filesystem evidence](../evidence/14_NFS03_nfs_root_filesystem_mounted.png)
+![View mounted NFS root filesystem evidence](../evidence/14_NFS03_nfs_root_filesystem_mounted.png)
 
 This confirmed that the exported filesystem was not merely discoverable: the assessment host was able to mount the target's root filesystem and access its contents.
 
@@ -133,7 +133,7 @@ mysql
 tomcat55
 ```
 
-[View /etc/passwd disclosure evidence](../evidence/14_NFS04_nfs_passwd_disclosure.png)
+![View /etc/passwd disclosure evidence](../evidence/14_NFS04_nfs_passwd_disclosure.png)
 
 The `/etc/passwd` file does not normally contain password hashes on modern Linux systems, but it provides useful account information such as:
 
@@ -155,7 +155,7 @@ cat /mnt/metasploitable2_nfs/etc/shadow
 
 The file was readable from the remotely mounted filesystem.
 
-[View sanitized /etc/shadow disclosure evidence](../evidence/14_NFS05_nfs_shadow_disclosure_%28REDACTED%29.png)
+![View sanitized /etc/shadow disclosure evidence](../evidence/14_NFS05_nfs_shadow_disclosure_%28REDACTED%29.png)
 
 The evidence demonstrates that password authentication material was accessible through the NFS mount.
 
@@ -193,7 +193,7 @@ The file was successfully created:
 -rw-r--r-- 1 root root 0 ... /mnt/metasploitable2_nfs/tmp/test2_nfs
 ```
 
-[View NFS write-access evidence](../evidence/14_NFS06_nfs_write_access.png)
+![View NFS write-access evidence](../evidence/14_NFS06_nfs_write_access.png)
 
 This demonstrated that the NFS exposure was not limited to read access: the assessment host was also able to create a file through the remotely mounted filesystem.
 
