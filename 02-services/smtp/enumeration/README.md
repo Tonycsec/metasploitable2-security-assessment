@@ -23,7 +23,7 @@ Nmap identified TCP/25 as an open SMTP service running Postfix:
 25/tcp open smtp Postfix smtpd
 ```
 
-[View Nmap SMTP service detection evidence](../evidence/04_SMTP01_nmap_smtp_detection.png)
+![View Nmap SMTP service detection evidence](../evidence/04_SMTP01_nmap_smtp_detection.png)
 
 The scan confirmed that the target was exposing an SMTP service on TCP/25.
 
@@ -51,7 +51,7 @@ ENHANCEDSTATUSCODES
 DSN
 ```
 
-[View SMTP command enumeration evidence](../evidence/04_SMTP02_smtp_commands.png)
+![View SMTP command enumeration evidence](../evidence/04_SMTP02_smtp_commands.png)
 
 The enumeration demonstrated that the SMTP service exposed several standard SMTP capabilities, including `VRFY`, `ETRN` and `STARTTLS`.
 
@@ -71,7 +71,7 @@ The server returned the following SMTP banner:
 220 metasploitable.localdomain ESMTP Postfix (Ubuntu)
 ```
 
-[View SMTP banner and EHLO evidence](../evidence/04_SMTP03_smtp_banner_and_ehlo.png)
+![View SMTP banner and EHLO evidence](../evidence/04_SMTP03_smtp_banner_and_ehlo.png)
 
 The banner disclosed the SMTP implementation and the hostname configured on the service.
 
