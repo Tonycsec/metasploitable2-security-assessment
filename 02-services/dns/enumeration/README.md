@@ -32,7 +32,7 @@ nmap 192.168.56.20 -p T:53,U:53 -sV
 
 The scan confirmed the DNS service on TCP/53.
 
-[View Nmap DNS service detection evidence](../evidence/05_DNS01_nmap_dns_detection.png)
+![View Nmap DNS service detection evidence](../evidence/05_DNS01_nmap_dns_detection.png)
 
 The detected BIND version indicated that the target was running a legacy DNS implementation.
 
@@ -57,7 +57,7 @@ The server returned an authoritative response for the requested domain:
 
 The query was processed directly by the target DNS service over UDP/53.
 
-[View DNS query evidence](../evidence/05_DNS02_dns_query.png)
+![View DNS query evidence](../evidence/05_DNS02_dns_query.png)
 
 This confirmed that the DNS service was reachable and capable of processing direct DNS queries.
 
@@ -77,7 +77,7 @@ The server rejected the transfer request:
 ; Transfer failed.
 ```
 
-[View AXFR denied evidence](../evidence/05_DNS03_axfr_denied.png)
+![View AXFR denied evidence](../evidence/05_DNS03_axfr_denied.png)
 
 An unrestricted AXFR transfer could potentially disclose the complete contents of a DNS zone, including hostnames, addresses and other infrastructure records.
 
