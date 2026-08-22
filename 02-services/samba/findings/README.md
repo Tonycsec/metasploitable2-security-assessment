@@ -58,7 +58,7 @@ This information can assist subsequent reconnaissance and help identify potentia
 
 ### Evidence
 
-[Anonymous SMB share enumeration](../enumeration/08_SAMBA01_smb_anonymous_enumeration.png)
+![Anonymous SMB share enumeration](../evidence/08_SAMBA01_smb_anonymous_enumeration.png)
 
 ### Recommendation
 
@@ -97,7 +97,7 @@ This bypasses the normal access-control boundary expected for protected SMB reso
 
 ### Evidence
 
-[Anonymous access to tmp share](../enumeration/08_SAMBA02_smb_tmp_anonymous_access.png)
+![Anonymous access to tmp share](../evidence/08_SAMBA02_smb_tmp_anonymous_access.png)
 
 ### Recommendation
 
@@ -134,7 +134,7 @@ The potential impact depends on what files are stored within the share and how t
 
 ### Evidence
 
-[Anonymous read access](../enumeration/08_SAMBA03_smb_tmp_read_access.png)
+![Anonymous read access](../evidence/08_SAMBA03_smb_tmp_read_access.png)
 
 ### Recommendation
 
@@ -190,7 +190,7 @@ The assessment did not test these scenarios. The confirmed finding is the **anon
 
 ### Evidence
 
-[Anonymous write access](../enumeration/08_SAMBA04_smb_tmp_write_access.png)
+![Anonymous write access](../evidence/08_SAMBA04_smb_tmp_write_access.png)
 
 ### Recommendation
 
@@ -252,7 +252,7 @@ It is useful supporting evidence because it demonstrates that anonymous access w
 
 ### Evidence
 
-[Anonymous access denied to opt](../enumeration/08_SAMBA05_smb_denied_access.png)
+![Anonymous access denied to opt](../evidence/08_SAMBA05_smb_denied_access.png)
 
 ---
 
