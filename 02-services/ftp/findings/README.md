@@ -29,7 +29,7 @@ The software version was identified through Nmap service and version detection.
 
 The service and version were identified during the FTP enumeration:
 
-[View Nmap service detection evidence](../evidence/01_FTP01_nmap_ftp_detection.png)
+![View Nmap service detection evidence](../evidence/01_FTP01_nmap_ftp_detection.png)
 
 The detected service was:
 
@@ -75,11 +75,11 @@ After authentication, the FTP session allowed interaction with the remote direct
 
 Anonymous authentication was successfully established:
 
-[View anonymous FTP login evidence](../evidence/01_FTP02_ftp_anonymous_login.png)
+![View anonymous FTP login evidence](../evidence/01_FTP02_ftp_anonymous_login.png)
 
 The subsequent FTP session allowed directory interaction:
 
-[View FTP directory enumeration evidence](../evidence/01_FTP03_ftp_directory_listing.png)
+![View FTP directory enumeration evidence](../evidence/01_FTP03_ftp_directory_listing.png)
 
 The directory enumeration was performed using:
 
@@ -136,4 +136,3 @@ The findings identified during this assessment provide the basis for the corresp
 These weaknesses should be addressed by upgrading or replacing the FTP service, disabling unnecessary anonymous access and restricting network exposure.
 
 The findings identified during this assessment provide the basis for the remediation recommendations documented in the project's remediation phase.
-
