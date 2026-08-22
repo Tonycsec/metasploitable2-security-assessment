@@ -24,7 +24,7 @@ No exploitation beyond controlled access-permission validation was performed.
 
 **Port:** TCP/445
 
-### Description
+## Description
 
 The Samba service permitted unauthenticated users to enumerate the SMB resources available on the target.
 
@@ -50,17 +50,17 @@ The server was identified as:
 Samba 3.0.20-Debian
 ```
 
-### Security Impact
+## Security Impact
 
 Anonymous share enumeration provides unauthenticated users with information about the resources exposed by the SMB server.
 
 This information can assist subsequent reconnaissance and help identify potentially accessible or misconfigured resources.
 
-### Evidence
+## Evidence
 
-[Anonymous SMB share enumeration](../enumeration/08_SAMBA01_smb_anonymous_enumeration.png)
+![Anonymous SMB share enumeration](../evidence/08_SAMBA01_smb_anonymous_enumeration.png)
 
-### Recommendation
+## Recommendation
 
 - Disable anonymous SMB enumeration where it is not explicitly required.
 - Require authentication for SMB resources.
@@ -77,7 +77,7 @@ This information can assist subsequent reconnaissance and help identify potentia
 
 **Port:** TCP/445
 
-### Description
+## Description
 
 The `tmp` SMB share accepted anonymous connections.
 
@@ -89,17 +89,17 @@ smbclient //192.168.56.20/tmp -N
 
 The connection succeeded and provided an interactive SMB session.
 
-### Security Impact
+## Security Impact
 
 An unauthenticated network client was able to interact directly with an SMB share without first authenticating.
 
 This bypasses the normal access-control boundary expected for protected SMB resources.
 
-### Evidence
+## Evidence
 
-[Anonymous access to tmp share](../enumeration/08_SAMBA02_smb_tmp_anonymous_access.png)
+![Anonymous access to tmp share](../evidence/08_SAMBA02_smb_tmp_anonymous_access.png)
 
-### Recommendation
+## Recommendation
 
 - Disable anonymous access unless it is explicitly required.
 - Require authentication for SMB shares.
@@ -116,7 +116,7 @@ This bypasses the normal access-control boundary expected for protected SMB reso
 
 **Port:** TCP/445
 
-### Description
+## Description
 
 After establishing an anonymous connection to the `tmp` share, we successfully listed its contents using:
 
@@ -126,17 +126,17 @@ ls
 
 This confirmed that anonymous users had read access to the share.
 
-### Security Impact
+## Security Impact
 
 An unauthenticated user could inspect the contents of an SMB-accessible resource.
 
 The potential impact depends on what files are stored within the share and how those files are subsequently used by the operating system or applications.
 
-### Evidence
+## Evidence
 
-[Anonymous read access](../enumeration/08_SAMBA03_smb_tmp_read_access.png)
+![Anonymous read access](../evidence/08_SAMBA03_smb_tmp_read_access.png)
 
-### Recommendation
+## Recommendation
 
 - Remove anonymous read permissions.
 - Apply least-privilege access controls.
@@ -153,7 +153,7 @@ The potential impact depends on what files are stored within the share and how t
 
 **Port:** TCP/445
 
-### Description
+## Description
 
 The anonymous SMB session was not limited to read access.
 
@@ -175,7 +175,7 @@ This confirmed that an unauthenticated SMB client had write access to the `tmp` 
 
 The test was deliberately limited to creating and removing a harmless temporary directory. No further modification or exploitation was performed.
 
-### Security Impact
+## Security Impact
 
 An unauthenticated network user could modify the contents of an SMB-accessible resource.
 
@@ -188,11 +188,11 @@ Depending on how the share is used by the operating system or applications, unau
 
 The assessment did not test these scenarios. The confirmed finding is the **anonymous write permission itself**.
 
-### Evidence
+## Evidence
 
-[Anonymous write access](../enumeration/08_SAMBA04_smb_tmp_write_access.png)
+![Anonymous write access](../evidence/08_SAMBA04_smb_tmp_write_access.png)
 
-### Recommendation
+## Recommendation
 
 - Disable anonymous write access.
 - Remove write permissions from unauthenticated users.
@@ -211,19 +211,19 @@ The assessment did not test these scenarios. The confirmed finding is the **anon
 
 **Port:** TCP/445
 
-### Description
+## Description
 
 The assessment identified SMB1 availability on the target.
 
 SMB1 is an obsolete SMB protocol version and should not normally be enabled on modern systems.
 
-### Security Impact
+## Security Impact
 
 Maintaining legacy protocol support increases the attack surface and may expose systems to vulnerabilities associated with obsolete SMB implementations.
 
 The presence of SMB1 is therefore an additional security weakness in the Samba configuration.
 
-### Recommendation
+## Recommendation
 
 - Disable SMB1 where compatibility requirements permit.
 - Use current SMB protocol versions.
@@ -250,9 +250,9 @@ This is **not a vulnerability finding**.
 
 It is useful supporting evidence because it demonstrates that anonymous access was not universally permitted across every discovered SMB resource.
 
-### Evidence
+## Evidence
 
-[Anonymous access denied to opt](../enumeration/08_SAMBA05_smb_denied_access.png)
+![Anonymous access denied to opt](../evidence/08_SAMBA05_smb_denied_access.png)
 
 ---
 
