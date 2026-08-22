@@ -30,11 +30,11 @@ The assessment confirmed that the Telnet service accepted interactive connection
 
 The Telnet service was identified through Nmap:
 
-[View Nmap Telnet service detection evidence](../evidence/03_Telnet01_nmap_telnet_detection.png)
+![View Nmap Telnet service detection evidence](../evidence/03_Telnet01_nmap_telnet_detection.png)
 
 A direct connection to the service was then established:
 
-[View authenticated Telnet connection evidence](../evidence/03_Telnet02_telnet_authenticated_connection.png)
+![View authenticated Telnet connection evidence](../evidence/03_Telnet02_telnet_authenticated_connection.png)
 
 ### Security Impact
 
@@ -72,11 +72,11 @@ SSH provides a secure alternative for remote administration, making the continue
 
 Nmap confirmed that Telnet was exposed on TCP/23:
 
-[View Nmap Telnet service detection evidence](../evidence/03_Telnet01_nmap_telnet_detection.png)
+![View Nmap Telnet service detection evidence](../evidence/03_Telnet01_nmap_telnet_detection.png)
 
 The service was also confirmed to accept direct remote connections:
 
-[View Telnet connection evidence](../evidence/03_Telnet02_telnet_authenticated_connection.png)
+![View Telnet connection evidence](../evidence/03_Telnet02_telnet_authenticated_connection.png)
 
 ### Security Impact
 
@@ -111,7 +111,7 @@ After connecting to TCP/23, valid laboratory credentials were supplied and an in
 
 The authenticated Telnet session is documented here:
 
-[View authenticated Telnet connection evidence](../evidence/03_Telnet02_telnet_authenticated_connection.png)
+![View authenticated Telnet connection evidence](../evidence/03_Telnet02_telnet_authenticated_connection.png)
 
 The session provided an interactive shell under the `msfadmin` account.
 
