@@ -14,7 +14,7 @@ psql -h 192.168.56.20 -U postgres
 
 The server requested password authentication and the connection was successfully established.
 
-[View remote PostgreSQL access](../evidence/12_POSTGRESQL02_remote_postgresql_access.png)
+![View remote PostgreSQL access](../evidence/12_POSTGRESQL02_remote_postgresql_access.png)
 
 The authenticated identity was subsequently confirmed as:
 
@@ -28,7 +28,7 @@ using:
 SELECT current_user;
 ```
 
-[View PostgreSQL current-user evidence](../evidence/12_POSTGRESQL04_postgresql_current_user.png)
+![View PostgreSQL current-user evidence](../evidence/12_POSTGRESQL04_postgresql_current_user.png)
 
 The account's privilege level was then explicitly verified:
 
@@ -48,7 +48,7 @@ t
 
 The value `t` confirms that the authenticated account is a PostgreSQL superuser.
 
-[View PostgreSQL superuser confirmation](../evidence/12_POSTGRESQL05_postgresql_superuser_confirmation.png)
+![View PostgreSQL superuser confirmation](../evidence/12_POSTGRESQL05_postgresql_superuser_confirmation.png)
 
 ### Impact
 
@@ -98,7 +98,7 @@ PostgreSQL 8.3.1
 
 The version was confirmed directly from the database server.
 
-[View PostgreSQL version evidence](../evidence/12_POSTGRESQL03_postgresql_version.png)
+![View PostgreSQL version evidence](../evidence/12_POSTGRESQL03_postgresql_version.png)
 
 The initial Nmap service detection also identified the service as:
 
@@ -106,7 +106,7 @@ The initial Nmap service detection also identified the service as:
 PostgreSQL DB 8.3.0 - 8.3.7
 ```
 
-[View PostgreSQL service detection evidence](../evidence/12_POSTGRESQL01_nmap_postgresql_detection.png)
+![View PostgreSQL service detection evidence](../evidence/12_POSTGRESQL01_nmap_postgresql_detection.png)
 
 ### Impact
 
@@ -146,11 +146,11 @@ Nmap confirmed the exposed service:
 5432/tcp open postgresql
 ```
 
-[View PostgreSQL service detection evidence](../evidence/12_POSTGRESQL01_nmap_postgresql_detection.png)
+![View PostgreSQL service detection evidence](../evidence/12_POSTGRESQL01_nmap_postgresql_detection.png)
 
 Remote authentication was subsequently demonstrated using the `postgres` account.
 
-[View remote PostgreSQL access](../evidence/12_POSTGRESQL02_remote_postgresql_access.png)
+![View remote PostgreSQL access](../evidence/12_POSTGRESQL02_remote_postgresql_access.png)
 
 ### Impact
 
@@ -233,19 +233,19 @@ The PostgreSQL findings are supported by the following evidence.
 
 Nmap identified PostgreSQL on TCP/5432.
 
-[View service detection evidence](../evidence/12_POSTGRESQL01_nmap_postgresql_detection.png)
+![View service detection evidence](../evidence/12_POSTGRESQL01_nmap_postgresql_detection.png)
 
 ### Remote Authentication
 
 A remote connection using the `postgres` account was successfully established.
 
-[View remote PostgreSQL access](../evidence/12_POSTGRESQL02_remote_postgresql_access.png)
+![View remote PostgreSQL access](../evidence/12_POSTGRESQL02_remote_postgresql_access.png)
 
 ### Version Identification
 
 The server reported PostgreSQL 8.3.1.
 
-[View PostgreSQL version evidence](../evidence/12_POSTGRESQL03_postgresql_version.png)
+![View PostgreSQL version evidence](../evidence/12_POSTGRESQL03_postgresql_version.png)
 
 ### Authenticated Identity
 
@@ -255,7 +255,7 @@ The session was confirmed as:
 postgres
 ```
 
-[View current-user evidence](../evidence/12_POSTGRESQL04_postgresql_current_user.png)
+![View current-user evidence](../evidence/12_POSTGRESQL04_postgresql_current_user.png)
 
 ### Superuser Validation
 
@@ -265,7 +265,7 @@ The account was confirmed to have:
 usesuper = true
 ```
 
-[View superuser confirmation](../evidence/12_POSTGRESQL05_postgresql_superuser_confirmation.png)
+![View superuser confirmation](../evidence/12_POSTGRESQL05_postgresql_superuser_confirmation.png)
 
 The complete evidence chain is:
 
