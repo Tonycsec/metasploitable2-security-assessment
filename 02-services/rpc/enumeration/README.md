@@ -21,7 +21,7 @@ Nmap identified TCP/111 as an RPC service:
 111/tcp open rpcbind 2 (RPC #100000)
 ```
 
-[View Nmap RPC portmapper detection evidence](../evidence/07_RPC01_nmap_rpc_portmapper.png)
+![View Nmap RPC portmapper detection evidence](../evidence/07_RPC01_nmap_rpc_portmapper.png)
 
 Port 111 is commonly associated with the RPC portmapper, which maintains information about RPC programs registered on the host.
 
@@ -37,7 +37,7 @@ rpcinfo -p 192.168.56.20
 
 The command queries the remote RPC portmapper and displays the RPC programs registered on the target.
 
-[View complete rpcinfo enumeration evidence](../evidence/07_RPC02_rpcinfo_enumeration.png)
+![View complete rpcinfo enumeration evidence](../evidence/07_RPC02_rpcinfo_enumeration.png)
 
 The enumeration identified the following RPC programs:
 
