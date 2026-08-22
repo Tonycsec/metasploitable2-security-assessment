@@ -34,11 +34,11 @@ The RPC portmapper was subsequently queried using `rpcinfo`, confirming that mul
 
 The RPC portmapper was identified through Nmap:
 
-[View Nmap RPC portmapper evidence](../evidence/07_RPC01_nmap_rpc_portmapper.png)
+![View Nmap RPC portmapper evidence](../evidence/07_RPC01_nmap_rpc_portmapper.png)
 
 The registered RPC services were enumerated using `rpcinfo`:
 
-[View RPC enumeration evidence](../evidence/07_RPC02_rpcinfo_enumeration.png)
+![View RPC enumeration evidence](../evidence/07_RPC02_rpcinfo_enumeration.png)
 
 ### Security Impact
 
@@ -86,7 +86,7 @@ These services were registered over both TCP and UDP.
 
 The complete RPC program enumeration is documented in:
 
-[View complete rpcinfo evidence](../evidence/07_RPC02_rpcinfo_enumeration.png)
+![View complete rpcinfo evidence](../evidence/07_RPC02_rpcinfo_enumeration.png)
 
 ### Security Impact
 
@@ -139,7 +139,7 @@ The discovery of these services indicated that NFS required a dedicated security
 
 The NFS and related RPC services were identified through:
 
-[View RPC enumeration evidence](../evidence/07_RPC02_rpcinfo_enumeration.png)
+![View RPC enumeration evidence](../evidence/07_RPC02_rpcinfo_enumeration.png)
 
 ### Security Impact
 
