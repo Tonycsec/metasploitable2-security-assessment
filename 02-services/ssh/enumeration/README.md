@@ -24,7 +24,7 @@ Nmap identified the following service:
 22/tcp open ssh OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
 ```
 
-[View Nmap SSH service detection evidence](../evidence/02_SSH01_nmap_ssh_detection.png)
+![View Nmap SSH service detection evidence](../evidence/02_SSH01_nmap_ssh_detection.png)
 
 The detected OpenSSH version indicated that the target was running a legacy SSH implementation and warranted further configuration and authentication assessment.
 
@@ -42,7 +42,7 @@ no matching host key type found.
 Their offer: ssh-rsa,ssh-dss
 ```
 
-[View legacy SSH algorithm error evidence](../evidence/02_SSH02_ssh_algorithm_error.png)
+![View legacy SSH algorithm error evidence](../evidence/02_SSH02_ssh_algorithm_error.png)
 
 This demonstrated that the SSH server exposed legacy host-key algorithms, including:
 
@@ -63,7 +63,7 @@ ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa msfadmin@
 
 The connection successfully established an interactive shell using the `msfadmin` account.
 
-[View authenticated SSH session evidence](../evidence/02_SSH03_ssh_authenticated_session.png)
+![View authenticated SSH session evidence](../evidence/02_SSH03_ssh_authenticated_session.png)
 
 This demonstrated that the SSH service was not only exposed remotely, but also permitted interactive authentication using a local system account.
 
@@ -83,7 +83,7 @@ The system reported:
 Linux metasploitable 2.6.24-16-server #1 SMP Thu Apr 10 13:58:00 UTC 2008 i686 GNU/Linux
 ```
 
-[View SSH system information evidence](../evidence/02_SSH04_ssh_system_information.png)
+![View SSH system information evidence](../evidence/02_SSH04_ssh_system_information.png)
 
 This identified the target as a legacy Linux environment running a 2.6.24 kernel.
 
