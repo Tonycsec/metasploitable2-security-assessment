@@ -355,7 +355,3 @@ WHERE usename = current_user;
 ```
 
 These were retained as lab troubleshooting notes because of the PostgreSQL 18 client / PostgreSQL 8.3 server compatibility issue.
-
-## Portfolio Conclusion
-
-**"TCP/5432 exposed a legacy PostgreSQL 8.3.1 service. Remote authentication as the `postgres` account was successfully established, and direct SQL queries confirmed that the authenticated account possessed PostgreSQL superuser privileges (`usesuper = true`). The assessment also identified significant compatibility issues between the modern PostgreSQL client and the legacy server. No exploitation or destructive database actions were performed."**
