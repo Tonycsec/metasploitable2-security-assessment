@@ -26,11 +26,11 @@ Service detection reported:
 3632/tcp open distccd distccd v1 ((GNU) 4.2.4 (Ubuntu 4.2.4-1ubuntu4))
 ```
 
-[View distccd service detection evidence](../evidence/10_DISTCCD01_nmap_distccd_detection.png)
+![View distccd service detection evidence](../evidence/10_DISTCCD01_nmap_distccd_detection.png)
 
 Further vulnerability research identified **CVE-2004-2687**, a known command-execution vulnerability affecting vulnerable `distccd` configurations.
 
-[View documented vulnerability reference](../evidence/10_DISTCCD03_documented_vulnerability.png)
+![View documented vulnerability reference](../evidence/10_DISTCCD03_documented_vulnerability.png)
 
 A dedicated Nmap NSE vulnerability check was then performed:
 
@@ -50,7 +50,7 @@ Risk factor: High
 CVSSv2: 9.3 (HIGH)
 ```
 
-[View Nmap vulnerability detection evidence](../evidence/10_DISTCCD04_distccd_cve_2004_2687.png)
+![View Nmap vulnerability detection evidence](../evidence/10_DISTCCD04_distccd_cve_2004_2687.png)
 
 ### Severity
 
@@ -151,7 +151,7 @@ distccd v1
 
 This is an obsolete software environment associated with known vulnerabilities.
 
-[View service version evidence](../evidence/10_DISTCCD01_nmap_distccd_detection.png)
+![View service version evidence](../evidence/10_DISTCCD01_nmap_distccd_detection.png)
 
 ### Security Impact
 
@@ -201,13 +201,13 @@ The evidence establishes the finding in three stages.
 
 Nmap identified the exposed `distccd` service and its version.
 
-[View service detection evidence](../evidence/10_DISTCCD01_nmap_distccd_detection.png)
+![View service detection evidence](../evidence/10_DISTCCD01_nmap_distccd_detection.png)
 
 ### 2. Vulnerability Research
 
 The documented Nmap NSE vulnerability reference identifies CVE-2004-2687 as a relevant `distccd` command-execution vulnerability.
 
-[View documented vulnerability reference](../evidence/10_DISTCCD03_documented_vulnerability.png)
+![View documented vulnerability reference](../evidence/10_DISTCCD03_documented_vulnerability.png)
 
 ### 3. Vulnerability Detection
 
@@ -217,7 +217,7 @@ Nmap NSE performed a non-destructive vulnerability check and classified the targ
 VULNERABLE (Exploitable)
 ```
 
-[View vulnerability detection evidence](../evidence/10_DISTCCD04_distccd_cve_2004_2687.png)
+![View vulnerability detection evidence](../evidence/10_DISTCCD04_distccd_cve_2004_2687.png)
 
 The complete evidence chain is:
 
