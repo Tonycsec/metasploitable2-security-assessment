@@ -34,7 +34,7 @@ Nmap reported:
 1524/tcp open bindshell Metasploitable root shell
 ```
 
-[View Nmap bind shell detection evidence](../evidence/09_BINDSHELL01_nmap_bindshell_detection.png)
+![Nmap bind shell detection evidence](../evidence/09_BINDSHELL01_nmap_bindshell_detection.png)
 
 The service was subsequently validated manually using:
 
@@ -48,7 +48,7 @@ The connection succeeded and presented an interactive shell:
 root@metasploitable:/#
 ```
 
-[View direct bind shell connection evidence](../evidence/09_BINDSHELL02_ncat_bindshell_connection.png)
+![Direct bind shell connection evidence](../evidence/09_BINDSHELL02_ncat_bindshell_connection.png)
 
 This confirms that the service was not merely responding to network probes: it was actively providing an interactive shell to a remote client.
 
@@ -89,7 +89,7 @@ No username or password was requested during the connection.
 
 The service therefore provided an interactive shell without conventional authentication.
 
-[View direct bind shell connection evidence](../evidence/09_BINDSHELL02_ncat_bindshell_connection.png)
+![Direct bind shell connection evidence](../evidence/09_BINDSHELL02_ncat_bindshell_connection.png)
 
 ### Security Impact
 
@@ -149,7 +149,7 @@ which returned:
 /
 ```
 
-[View root privilege and target verification evidence](../evidence/09_BINDSHELL03_root_privilege_confirmation.png)
+![Root privilege and target verification evidence](../evidence/09_BINDSHELL03_root_privilege_confirmation.png)
 
 These checks confirm that the remotely accessible shell belonged to the target system and was operating with root privileges.
 
@@ -204,11 +204,11 @@ hostname → metasploitable
 pwd → /
 ```
 
-[View Nmap detection evidence](../evidence/09_BINDSHELL01_nmap_bindshell_detection.png)
+![Nmap detection evidence](../evidence/09_BINDSHELL01_nmap_bindshell_detection.png)
 
-[View direct shell connection evidence](../evidence/09_BINDSHELL02_ncat_bindshell_connection.png)
+![Direct shell connection evidence](../evidence/09_BINDSHELL02_ncat_bindshell_connection.png)
 
-[View root privilege confirmation evidence](../evidence/09_BINDSHELL03_root_privilege_confirmation.png)
+![Root privilege confirmation evidence](../evidence/09_BINDSHELL03_root_privilege_confirmation.png)
 
 This demonstrates that the exposure is not theoretical.
 
@@ -263,19 +263,19 @@ The three screenshots provide a concise and complete evidence chain.
 
 Nmap identified TCP/1524 as a bind shell:
 
-[View bind shell detection evidence](../evidence/09_BINDSHELL01_nmap_bindshell_detection.png)
+![Bind shell detection evidence](../evidence/09_BINDSHELL01_nmap_bindshell_detection.png)
 
 ### 2. Direct Connection
 
 Netcat established an interactive shell:
 
-[View bind shell connection evidence](../evidence/09_BINDSHELL02_ncat_bindshell_connection.png)
+![Bind shell connection evidence](../evidence/09_BINDSHELL02_ncat_bindshell_connection.png)
 
 ### 3. Privilege and Target Verification
 
 `whoami`, `hostname` and `pwd` confirmed root privileges and the target context:
 
-[View root privilege confirmation evidence](../evidence/09_BINDSHELL03_root_privilege_confirmation.png)
+![Root privilege confirmation evidence](../evidence/09_BINDSHELL03_root_privilege_confirmation.png)
 
 The complete evidence chain is:
 
