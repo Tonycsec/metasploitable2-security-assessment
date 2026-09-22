@@ -1,4 +1,4 @@
-# Bind Shell Enumeration
+# bindshell Enumeration
 
 ## Service Information
 
