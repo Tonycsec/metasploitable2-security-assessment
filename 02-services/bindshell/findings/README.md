@@ -1,4 +1,4 @@
-# Bind Shell Security Findings
+# bindshell Security Findings
 
 ## Overview
 
