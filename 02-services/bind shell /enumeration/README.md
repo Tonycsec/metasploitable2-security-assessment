@@ -2,7 +2,7 @@
 
 ## Service Information
 
-- **Service:** Bind Shell
+- **Service:** bindshell
 - **Port:** TCP/1524
 - **Target:** Metasploitable 2
 - **Detected service:** Metasploitable root shell
